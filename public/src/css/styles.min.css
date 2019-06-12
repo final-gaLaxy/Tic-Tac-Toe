@@ -1,0 +1,91 @@
+html,
+body {
+    background: red
+}
+
+header {
+    text-align: center
+}
+
+table {
+    margin: auto;
+    width: auto;
+    height: auto;
+    border-collapse: collapse;
+    cursor: default;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-transform: translate(-40%, 0);
+    transform: translate(-40%, 0)
+}
+
+table th {
+    border: 1px solid white;
+    font-size: 5em;
+    max-height: 200px;
+    max-width: 200px;
+    height: 200px;
+    width: 200px
+}
+
+table th>div {
+    height: 200px;
+    width: 200px
+}
+
+table tbody tr:first-child th:first-child {
+    border-top: none;
+    border-left: none
+}
+
+table tbody tr:first-child th:nth-child(2) {
+    border-top: none
+}
+
+table tbody tr:first-child th:nth-child(3) {
+    border-top: none;
+    border-right: none
+}
+
+table tbody tr:nth-child(2) th:first-child {
+    border-left: none
+}
+
+table tbody tr:nth-child(2) th:nth-child(3) {
+    border-right: none
+}
+
+table tbody tr:nth-child(3) th:first-child {
+    border-bottom: none;
+    border-left: none
+}
+
+table tbody tr:nth-child(3) th:nth-child(2) {
+    border-bottom: none
+}
+
+table tbody tr:nth-child(3) th:nth-child(3) {
+    border-bottom: none;
+    border-right: none
+}
+
+.container {
+    font-size: 3vh;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    -webkit-transform: translate(0, -50%);
+    transform: translate(0, -50%)
+}
+
+.container .game-info {
+    height: 100px;
+    width: 350px
+}
+
+.container .game-count {
+    height: 100px;
+    width: auto
+}

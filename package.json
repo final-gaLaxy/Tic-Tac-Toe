@@ -1,0 +1,27 @@
+{
+    "name": "tic-tac-toe",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "dependencies": {
+        "express": "^4.17.0",
+        "express-session": "^1.16.1",
+        "nodemon": "^1.19.1",
+        "socket.io": "^2.2.0"
+    },
+    "devDependencies": {
+        "autoprefixer": "^9.5.1",
+        "grunt": "^1.0.4",
+        "grunt-contrib-sass": "^1.0.0",
+        "grunt-contrib-uglify": "^4.0.1",
+        "grunt-contrib-watch": "^1.1.0",
+        "grunt-postcss": "^0.9.0"
+    },
+    "scripts": {
+        "start": "npm run -s starttext && npm run -s startapp",
+        "startapp": "nodemon index.js",
+        "starttext": "echo Starting Express Application!"
+    },
+    "author": "",
+    "license": "ISC"
+}

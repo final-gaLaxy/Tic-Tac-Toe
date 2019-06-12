@@ -1,0 +1,82 @@
+html,
+body {
+    background: red;
+}
+
+header {
+    text-align: center;
+}
+
+table {
+    margin: auto;
+    width: auto;
+    height: auto;
+    border-collapse: collapse;
+    cursor: default;
+    user-select: none;
+    transform: translate(-40%, 0);
+    th {
+        border: 1px solid black;
+        font-size: 5em;
+        max-height: 200px;
+        max-width: 200px;
+        height: 200px;
+        width: 200px;
+    }
+    th>div {
+        height: 200px;
+        width: 200px;
+    }
+    tbody {
+        tr:first-child {
+            th:first-child {
+                border-top: none;
+                border-left: none;
+            }
+            th:nth-child(2) {
+                border-top: none;
+            }
+            th:nth-child(3) {
+                border-top: none;
+                border-right: none;
+            }
+        }
+        tr:nth-child(2) {
+            th:first-child {
+                border-left: none;
+            }
+            th:nth-child(3) {
+                border-right: none;
+            }
+        }
+        tr:nth-child(3) {
+            th:first-child {
+                border-bottom: none;
+                border-left: none;
+            }
+            th:nth-child(2) {
+                border-bottom: none;
+            }
+            th:nth-child(3) {
+                border-bottom: none;
+                border-right: none;
+            }
+        }
+    }
+}
+
+.container {
+    font-size: 3vh;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+    .game-info {
+        height: 100px;
+        width: 350px;
+    }
+    .game-count {
+        height: 100px;
+        width: auto;
+    }
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Socket.IO Chat Example</title>
+    <link rel="stylesheet" href="src/css/style.css" />
+</head>
+
+<body>
+    <ul class="pages">
+        <li class="chat page">
+            <div class="chatArea">
+
+            </div>
+            <input class="inputMessage" placeholder="Type here..." />
+        </li>
+        <li class="lobby page">
+            <div class="form">
+                <h3 class="title">Enter a Game ID</h3>
+                <input class="lobbyInput" type="text" maxlength="14" />
+            </div>
+            <div class="form" id="form2">
+                <h3 class="title">OR</h3>
+                <button class="game btn">Browse Games</button>
+            </div>
+        </li>
+        <li class="lobby-list page">
+            <div class="lobbies"></div>
+        </li>
+        <li class="login page">
+            <div class="form">
+                <h3 class="title">What's your nickname?</h3>
+                <input class="usernameInput" type="text" maxlength="14" />
+            </div>
+        </li>
+        <li class="game page">
+            <header>
+                <ul class="messages"></ul>
+                <h1>Tic Tac Toe</h1>
+                <h3 id="player">Playing Now: O</h3>
+            </header>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>
+                            <div id="00"></div>
+                        </th>
+                        <th>
+                            <div id="01"></div>
+                        </th>
+                        <th>
+                            <div id="02"></div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <div id="10"></div>
+                        </th>
+                        <th>
+                            <div id="11"></div>
+                        </th>
+                        <th>
+                            <div id="12"></div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <div id="20"></div>
+                        </th>
+                        <th>
+                            <div id="21"></div>
+                        </th>
+                        <th>
+                            <div id="22"></div>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="container">
+                <div class="game-count">X: 0,<br>O: 0</div>
+                <div class="game-info"></div>
+            </div>
+        </li>
+    </ul>
+
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/main.js"></script>
+    <!-- <script src="/src/js/script.min.js"></script> -->
+</body>
+
+</html>
