@@ -98,10 +98,15 @@ $(function() {
     }
 
     const addLobbies = (el) => {
-        if ($lobbylistPage.children().length !== 0) $($messages[0]).empty();
+        if ($lobbyArea.children().length !== 0) $($lobbyArea[0]).empty();
         lobbies.forEach(element => {
-            var $el = $('<li>').addClass('lobbyId').text(element);
-            $lobbyArea.append(el);
+            console.log("hi");
+            let title = $('<h3>').addClass('lobbyName').text('Lobby: ' + element);
+            let join = $('<button>').addClass('lobbyJoin').text('Join');
+            var $el = $('<li>').addClass('lobbyId')
+                .append(title)
+                .append(join);
+            $lobbyArea.append($el);
         });
     }
 
@@ -167,8 +172,10 @@ $(function() {
     socket.on('login', (data) => {
         connected = true;
         // Display the welcome message
+        // TODO: stop the additional player from moving
         var message = "You joined Game: " + data.lobby;
         player = data.playing;
+        if (eval(`data.player${data.playing}`) !== username) canMove = false;
         log(message, {
             prepend: true
         });
@@ -182,6 +189,7 @@ $(function() {
 
     socket.on('new lobby', (data) => {
         lobbies = data.lobbies;
+        console.log(lobbies);
         addLobbies();
     });
 

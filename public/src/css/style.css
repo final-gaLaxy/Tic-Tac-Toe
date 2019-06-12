@@ -118,7 +118,8 @@ ul {
 .lobby.page .title,
 .lobby.page .lobbyInput,
 .lobby.page button,
-.game.page {
+.game.page,
+.lobbies .lobbyId {
     color: #fff;
     font-weight: 100;
 }
@@ -215,7 +216,7 @@ ul {
 }
 
 
-/* Tic Tac Toa */
+/* Tic Tac Toe */
 
 .game.page header {
     text-align: center;
@@ -309,4 +310,60 @@ table tbody tr:nth-child(3) th:nth-child(3) {
     height: 100px;
     width: auto;
     z-index: -999;
+}
+
+
+/* Tic Tac Toe BrowseLobbies */
+
+.lobbies {
+    margin-top: 10px;
+    padding: 0;
+    padding-left: calc(20%/3);
+}
+
+.lobbies .lobbyId {
+    position: relative;
+    list-style: none;
+    float: left;
+    width: 40vw;
+    height: 10vh;
+    margin-right: calc(20%/3);
+    margin-bottom: 2%;
+    border: 2px solid white;
+    color: white;
+    text-align: center;
+}
+
+.lobbies .lobbyId h3.lobbyName {
+    font-size: 150%;
+    letter-spacing: 2px;
+    margin: 0;
+    font-weight: 100;
+}
+
+.lobbies button.lobbyJoin {
+    background-color: transparent;
+    text-align: center;
+    cursor: pointer;
+    border: 2px solid #fff;
+    color: white;
+    font-weight: 100;
+    font-size: 150%;
+    position: absolute;
+    bottom: 15%;
+    left: 60%;
+    width: 30%;
+    padding: 1%;
+    -webkit-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    -ms-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.lobbies button.lobbyJoin:hover,
+.lobbies button.lobbyJoin.active {
+    border: solid 2px #fff;
+    background: #fff;
+    color: #1f1f1f;
 }

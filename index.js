@@ -8,6 +8,7 @@ var port = process.env.PORT || 8080;
 
 // Initialise variables for future use
 var rooms = {};
+let lobbies = [];
 
 // Listen to port 8080 or local variable's designated port
 server.listen(port, () => {
@@ -29,7 +30,7 @@ io.on("connection", socket => {
         socket.username = username;
         addedUser = true;
         io.to(socket.id).emit("new lobby", {
-            lobbies: Object.keys(rooms)
+            lobbies: lobbies
         })
     });
 
@@ -48,7 +49,6 @@ io.on("connection", socket => {
             rooms[data.lobbyId].users.push(`${socket.username}`);
             if (rooms[data.lobbyId].playerO !== "") {
                 if (rooms[data.lobbyId].playerX == "") {
-                    rooms[data.lobbyId].playing = `X`;
                     rooms[data.lobbyId].playerX = socket.username;
                 }
             } else {
@@ -91,17 +91,20 @@ io.on("connection", socket => {
             socket.join(`${data.lobbyId}`);
 
             // Emit to all users a new lobby is available for joining
-            io.emit("new lobby", { lobbies: Object.keys(rooms) });
             Object.keys(io.sockets.clients().connected).forEach(session => {
-                if (!("lobby" in io.sockets.clients().connected[session])) return;
-                console.log(io.sockets.clients().connected[session].lobby);
+                if (!("lobby" in io.sockets.clients().connected[session])) {} else {
+                    if (!lobbies.includes(io.sockets.clients().connected[session].lobby)) lobbies.push(io.sockets.clients().connected[session].lobby);
+                }
             });
+            io.emit("new lobby", { lobbies: lobbies });
         }
 
         // Emit "login" to current socket to register they have entered the lobby
         io.to(socket.id).emit("login", {
             lobby: data.lobbyId,
-            playing: rooms[data.lobbyId].playing
+            playing: rooms[data.lobbyId].playing,
+            playerX: rooms[data.lobbyId].playerX,
+            playerO: rooms[data.lobbyId].playerO
         });
     });
 
