@@ -367,3 +367,9 @@ table tbody tr:nth-child(3) th:nth-child(3) {
     background: #fff;
     color: #1f1f1f;
 }
+
+.lobbies .users p {
+    text-align: left;
+    margin: 0;
+    font-size: 3vmin;
+}

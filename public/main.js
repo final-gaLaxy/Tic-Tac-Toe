@@ -22,7 +22,7 @@ $(function() {
     var $currentInput = $usernameInput.focus();
 
     var lobby;
-    var lobbies = [];
+    var lobbies = {};
     var searchTimer;
 
     const setUsername = () => {
@@ -99,14 +99,42 @@ $(function() {
 
     const addLobbies = (el) => {
         if ($lobbyArea.children().length !== 0) $($lobbyArea[0]).empty();
-        lobbies.forEach(element => {
-            console.log("hi");
+        Object.keys(lobbies).forEach(element => {
+            console.log(element);
+            // Show Lobby Name
             let title = $('<h3>').addClass('lobbyName').text('Lobby: ' + element);
-            let join = $('<button>').addClass('lobbyJoin').text('Join');
+
+            // Show User Info
+            let totalusers = lobbies[element].users.length;
+            let players = 0;
+            let spectators = 0;
+            if (totalusers >= 2) {
+                players = 2;
+                spectators = totalusers - 2;
+            } else if (totalusers == 1) {
+                players = 1;
+            }
+
+            let users = $('<div>').addClass('users')
+                .append($('<p>').addClass('totalPlayers').text("Players: " + players))
+                .append($('<p>').addClass('totalSpec').text("Spectators: " + spectators));
+
+
+            //Show Join button
+            let join = $('<button>').addClass('lobbyJoin').text('Join').on('click', () => {
+                socket.emit('join lobby', { username: username, lobbyId: element });
+                $lobbylistPage.fadeOut();
+                $gamePage.show();
+                $lobbylistPage.off('click');
+            });
+
+            // Append newly created element to lobbyId as <li></li>
             var $el = $('<li>').addClass('lobbyId')
                 .append(title)
+                .append(users)
                 .append(join);
             $lobbyArea.append($el);
+
         });
     }
 
@@ -186,7 +214,7 @@ $(function() {
     socket.on('user joined', (data) => {
         log(data.username + ' joined');
     });
-
+    // Mirror server object to lobbies
     socket.on('new lobby', (data) => {
         lobbies = data.lobbies;
         console.log(lobbies);

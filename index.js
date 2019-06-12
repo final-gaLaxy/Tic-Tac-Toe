@@ -30,7 +30,7 @@ io.on("connection", socket => {
         socket.username = username;
         addedUser = true;
         io.to(socket.id).emit("new lobby", {
-            lobbies: lobbies
+            lobbies: rooms
         })
     });
 
@@ -96,7 +96,7 @@ io.on("connection", socket => {
                     if (!lobbies.includes(io.sockets.clients().connected[session].lobby)) lobbies.push(io.sockets.clients().connected[session].lobby);
                 }
             });
-            io.emit("new lobby", { lobbies: lobbies });
+            io.emit("new lobby", { lobbies: rooms });
         }
 
         // Emit "login" to current socket to register they have entered the lobby
