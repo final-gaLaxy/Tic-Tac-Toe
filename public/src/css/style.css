@@ -408,14 +408,39 @@ table tbody tr:nth-child(3) th:nth-child(3) {
         font-size: 150%;
         letter-spacing: 3px;
     }
-    /* Lobbies */
+    .lobby.page .lobbyInput,
+    .lobby.page .title {
+        transform: translate(0, 0);
+    }
+    .lobby.page button {
+        position: static;
+        transform: translate(0, 120%);
+    }
+    .lobby.page .title {
+        width: 100%;
+        margin: 1em auto 1em auto;
+    }
+    .lobby.page .form:not(#form2) {
+        transform: translate(-50%, -50%);
+        width: 100%;
+    }
+    .lobby.page .form#form2 {
+        transform: translate(-50%, 50%);
+    }
+    .lobby.page .form .title {
+        margin: 0
+    }
+    .lobby.page .form .lobbyInput {
+        padding-left: 0;
+    }
+    /* Lobby Browsing */
     .lobbies button.lobbyJoin {
         color: white;
         font-weight: 100;
         font-size: 100%;
         bottom: 15%;
         left: 60%;
-        width: 30%;
+        width: 35%;
     }
     .lobbies .lobbyId h3.lobbyName {
         font-size: 100%;
@@ -425,5 +450,23 @@ table tbody tr:nth-child(3) th:nth-child(3) {
     }
     .lobbies .users p {
         margin: 5px;
+    }
+    /* Game Page */
+    .container {
+        position: static;
+        margin-top: 10%;
+        width: 100%;
+        padding-left: 0;
+    }
+    .container .game-count {
+        padding-left: 10px;
+        position: absolute;
+        z-index: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+    .game.page header>h1 {
+        font-size: 2em;
+        margin: 0;
     }
 }
