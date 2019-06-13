@@ -370,6 +370,60 @@ table tbody tr:nth-child(3) th:nth-child(3) {
 
 .lobbies .users p {
     text-align: left;
-    margin: 0;
+    margin: 2px;
     font-size: 3vmin;
+}
+
+
+/* PC adjustments */
+
+@media only screen and (min-width: 960px) {
+    /* Lobbies */
+    .lobbies .users p {
+        margin: 9px;
+        font-size: 2vmin;
+    }
+    .lobbies .lobbyId {
+        height: 20vh;
+    }
+}
+
+
+/* Mobile Adjustments */
+
+@media (max-width: 960px) {
+    /* Forms */
+    .login.page .title,
+    .lobby.page .title {
+        font-size: 150%;
+    }
+    .login.page .form .usernameInput,
+    .lobby.page .form .lobbyInput,
+    .lobby.page button {
+        width: 70%;
+    }
+    .login.page .usernameInput,
+    .lobby.page .lobbyInput,
+    .lobby.page button {
+        font-size: 150%;
+        letter-spacing: 3px;
+    }
+    /* Lobbies */
+    .lobbies button.lobbyJoin {
+        color: white;
+        font-weight: 100;
+        font-size: 100%;
+        bottom: 15%;
+        left: 60%;
+        width: 30%;
+    }
+    .lobbies .lobbyId h3.lobbyName {
+        font-size: 100%;
+        letter-spacing: 2px;
+        margin: 0;
+        font-weight: 100;
+    }
+    .lobbies .users p {
+        margin: 5px;
+    }
 }
