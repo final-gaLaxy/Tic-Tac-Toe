@@ -1,5 +1,20 @@
 var socket = io();
 
+function filterLobbies() {
+    var filter, lobbies;
+    filter = $('.filterInput').val();
+    lobbies = $('.lobbies li h3');
+    for (var i = 0; i < lobbies.length; i++) {
+
+        if ($(lobbies[i]).text().substring(7, $(lobbies[i]).text().length).indexOf(filter) > -1) {
+            $(lobbies[i]).parent().css('display', '')
+        } else {
+            $(lobbies[i]).parent().css('display', 'none');
+        }
+    }
+}
+
+
 $(function() {
 
     var $window = $(window);
@@ -100,7 +115,6 @@ $(function() {
     const addLobbies = (el) => {
         if ($lobbyArea.children().length !== 0) $($lobbyArea[0]).empty();
         Object.keys(lobbies).forEach(element => {
-            console.log(element);
             // Show Lobby Name
             let title = $('<h3>').addClass('lobbyName').text('Lobby: ' + element);
 
@@ -217,7 +231,6 @@ $(function() {
     // Mirror server object to lobbies
     socket.on('new lobby', (data) => {
         lobbies = data.lobbies;
-        console.log(lobbies);
         addLobbies();
     });
 
